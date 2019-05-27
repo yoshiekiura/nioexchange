@@ -37,7 +37,9 @@
 </header> -->
   <div id="header" class="header">
     <div class="header__container">
-      <a href="/" id="header-logo-id" class="icon icon-logo--light"></a>
+      <a href="/" id="" class="icon icon-logo--light">
+        <%= image_tag('logo.png', style: "width: 60px;") %>
+      </a>
       <div class="header__manage-block">
         <% if @data[:current_member] %>
             <section id="header-manage-section-id" class="header__manage-block">
