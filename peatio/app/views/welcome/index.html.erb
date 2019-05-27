@@ -1,47 +1,81 @@
-<div class="container mt-5">
-  <div class="d-flex justify-content-center">
-    <div class="welcome-logo">
-      <a href="https://peatio.tech" target="blank">
-        <img src="<%= ENV['LOGO_URL'] || image_path('logo.svg') %>">
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+        <%= image_tag('logo.png', style: "width: 60px;") %>
       </a>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home
+                <span class="sr-only">(current)</span>
+              </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/trading/bchbtc">Exchange</a>
+        </li>
+        <li class="nav-item">
+          <% provider = ENV['OAUTH2_SIGN_IN_PROVIDER'] %>
+          <% unless provider.blank? %>
+            <a class="nav-link" href="/auth/<%= provider == 'google' ? 'google_oauth2' : provider %>" role="button">
+              <%= t("header.sign_in_with_#{provider}") %>
+            </a>
+          <% end %>
+        </li>
+      </ul>
     </div>
   </div>
+</nav>
 
-  <section class="text-center" style="line-height: 1">
-    <h2><%= t('slogan.heading') %></h2>
-    <% if flash[:notice] || flash[:info] || flash[:alert] %>
-      <div class="row justify-content-center">
-        <div class="col-12">
-          <%= render 'shared/flash' %>
+<header>
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+      <!-- Slide One - Set the background image for this slide in the line below -->
+      <div class="carousel-item active" style="background-image: url('https://source.unsplash.com/RCAhiGJsUUE/1920x1080')">
+        <div class="carousel-caption d-none d-md-block">
+          <h3 class="display-4">First Slide</h3>
+          <p class="lead">This is a description for the first slide.</p>
         </div>
       </div>
-    <% else %>
-      <h3><%= t('slogan.subheading') %></h3>
-      <p><%= t('slogan.text1') %></p>
-      <p><%= t('slogan.text2') %></p>
-    <% end %>
-  </section>
-
-  <div class="row justify-content-center" id="getstart">
-    <% unless current_user %>
-      <div class="col-8 text-center">
-        <% # Output button for enabled OAuth2 provider. %>
-        <% provider = ENV['OAUTH2_SIGN_IN_PROVIDER'] %>
-        <% unless provider.blank? %>
-          <a class="btn btn-primary btn-lg btn-block" href="/auth/<%= provider == 'google' ? 'google_oauth2' : provider %>" role="button">
-            <small><%= t("header.sign_in_with_#{provider}") %></small>
-          </a>
-        <% end %>
+      <!-- Slide Two - Set the background image for this slide in the line below -->
+      <div class="carousel-item" style="background-image: url('https://source.unsplash.com/wfh8dDlNFOk/1920x1080')">
+        <div class="carousel-caption d-none d-md-block">
+          <h3 class="display-4">Second Slide</h3>
+          <p class="lead">This is a description for the second slide.</p>
+        </div>
       </div>
-    <% else %>
-      <div class="col-8 text-center">
-        <a class="btn btn-primary btn-lg btn-block" href="<%= trading_path(current_market) %>" role="button">
-          <small><%= t('header.getstart') %></small>
-          </a>
-        <a class="btn btn-primary btn-lg btn-block" href="<%= settings_path %>" role="button">
-          <small><%= t('header.settings') %></small>
-          </a>
+      <!-- Slide Three - Set the background image for this slide in the line below -->
+      <div class="carousel-item" style="background-image: url('https://source.unsplash.com/O7fzqFEfLlo/1920x1080')">
+        <div class="carousel-caption d-none d-md-block">
+          <h3 class="display-4">Third Slide</h3>
+          <p class="lead">This is a description for the third slide.</p>
+        </div>
       </div>
-    <% end %>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
   </div>
-</div>
+</header>
+
+<!-- Page Content -->
+<section class="py-5">
+  <div class="container">
+    <h1 class="font-weight-light">Nio Exchange</h1>
+    <p class="lead">Welcome to Nio Exchange</p>
+  </div>
+</section>
