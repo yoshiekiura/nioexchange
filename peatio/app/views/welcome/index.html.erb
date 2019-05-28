@@ -18,6 +18,7 @@
         <li class="nav-item">
           <a class="nav-link" href="/trading/bchbtc">Exchange</a>
         </li>
+        <% unless current_user %>
         <li class="nav-item">
           <% provider = ENV['OAUTH2_SIGN_IN_PROVIDER'] %>
           <% unless provider.blank? %>
@@ -26,6 +27,14 @@
             </a>
           <% end %>
         </li>
+        <% else %>
+          <li class="nav-item">
+            <a class="nav-link" href="/funds">Funds</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/history/orders">History</a>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>
