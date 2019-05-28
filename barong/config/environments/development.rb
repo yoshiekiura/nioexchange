@@ -40,15 +40,29 @@ Rails.application.configure do
   # SMTP_PORT - port, where fake relay is running. By default it is equal to 1025.
   #
   # Notice: Used by WorkBench.
-  config.action_mailer.smtp_settings = {
-      address: ENV.fetch('SMTP_ADDRESS', 'localhost'),
-      port: ENV.fetch('SMTP_PORT', 1025)
+  #config.action_mailer.smtp_settings = {
+  #    address: ENV.fetch('SMTP_ADDRESS', 'localhost'),
+  #    port: ENV.fetch('SMTP_PORT', 1025)
+  #}
+
+  #options = { host: ENV.fetch('SMTP_URL_ADDRESS', 'localhost') }
+  #options[:port] = 3000 if options[:host] == 'localhost'
+
+  #config.action_mailer.default_url_options = options
+  config.action_mailer.default_url_options = {
+      host: ENV['AUTH_URL_HOST'],
+      protocol: ENV['URL_SCHEME']
   }
 
-  options = { host: ENV.fetch('SMTP_URL_ADDRESS', 'localhost') }
-  options[:port] = 3000 if options[:host] == 'localhost'
-
-  config.action_mailer.default_url_options = options
+  config.action_mailer.smtp_settings = {
+      address:              ENV['SMTP_ADDRESS'],
+      port:                 ENV['SMTP_PORT'],
+      domain:               ENV['SMTP_DOMAIN'],
+      user_name:            ENV['SMTP_EMAIL_ADDRESS'],
+      password:             ENV['SMTP_EMAIL_PASSWORD'],
+      authentication:       :plain,
+      enable_starttls_auto: true
+  }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
