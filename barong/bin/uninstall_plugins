@@ -1,5 +1,0 @@
-#!/usr/bin/env ruby
-
-require 'fileutils'
-
-Dir['vendor/plugins/*'].each { |d| FileUtils.rm_rf(d) }
