@@ -1,15 +1,11 @@
-<!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-  <div class="container">
-    <a class="navbar-brand" href="#">
-        <%= image_tag('logo.png', style: "width: 60px;") %>
-      </a>
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#"><%= image_tag('logo.png', style: "width: 60px;") %></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
           <a class="nav-link" href="#">Home
                 <span class="sr-only">(current)</span>
@@ -36,7 +32,6 @@
           </li>
         <% end %>
       </ul>
-    </div>
   </div>
 </nav>
 
@@ -81,10 +76,8 @@
   </div>
 </header>
 
-<!-- Page Content -->
-<section class="py-5">
-  <div class="container">
-    <h1 class="font-weight-light">Nio Exchange</h1>
-    <p class="lead">Welcome to Nio Exchange</p>
+<div class="row">
+  <div class="col-md-12">
+    <h1>Welcome to Nio Exchange</h1>
   </div>
-</section>
+</div>
