@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   resources :documents, only: %i[new create]
 
   namespace :admin do
-    get '/', to: 'accounts#index', as: :accounts
+    get 'accounts', to: 'accounts#index', as: :accounts
     resources :accounts, except: %i[new create] do
       post :disable_2fa, on: :member
 
